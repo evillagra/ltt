@@ -21,7 +21,7 @@
 		</li>	
 		<li class='has-sub'><a href='#'>Productos</a>
 			<ul>
-				<li ><a href='xxxx_add.php'>Agregar</a></li>
+				<li ><a href='producto_add.php'>Agregar</a></li>
 				<li ><a href='xxx_lst.php'>Actualizar</a></li>
 				<li ><a href='xxx_del.php'>Eliminar</a></li>
 			</ul>
