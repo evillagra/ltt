@@ -1,6 +1,6 @@
 <?php 
 
-class Usuario{
+class Oc{
 	private $sestado;
 	private $sfechaemi;
 	private $sidoc;
@@ -90,11 +90,7 @@ function Selecciona(){
 		$db=dbconnect();
 		$sqlins="insert into orden_compras (estado, fecha_emision, id_oc, id_usuario, total_oc) values (:est,:fec,:idoc,:iduser,:tot)";
 	
-		// Valida si usuario existe, si existe no lo agrega.
-		if ($this->VerificaUsuario()){
-			echo "Clase OC:Agregar: El usuario $this->sidoc existe en la base de datos.";
-			return false;
-		}
+		
 	
 		/*Preparacion SQL*/
 		try {

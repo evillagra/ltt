@@ -7,7 +7,7 @@
 <li class='active'><a href='index.php'>Inicio</a></li>
 <li class='has-sub'><a href='#'>Orden de Compra</a>
 	<ul> 
-	<li ><a href='#'>Agregar Orden de Compra</a></li>
+	<li ><a href='oc_add.php'>Agregar Orden de Compra</a></li>
 	</ul>
 </li>
 <li class='has-sub'><a href='#'>Mantenedores</a>
