@@ -145,6 +145,31 @@ function Selecciona(){
 					echo "Clase OC:ERROR:Ejecucion Query ".$Exception->getMessage( ).'/'. $Exception->getCode( );
 				}
 			}
+			
+			function LeerRegistro(){
+				if (!$this->querysel){
+					$db=dbconnect();
+					/*Definición del query que permitira ingresar un nuevo registro*/
+						
+					$sqlsel = " SELECT estado, fecha_emision, id_oc, id_usuario, total_oc ";
+					$sqlsel.= " FROM orden_compras WHERE id_oc=:id ";
+						
+					/*Preparación SQL*/
+					$querysel=$db->prepare($sqlsel);
+						
+					$querysel->bindParam(':id',$this->nidoc);
+						
+					$querysel->execute();
+				}
+			
+				$registro = $querysel->fetch();
+				if ($registro){
+					return new self($registro['estado'], $registro['fecha_emision'], $registro['id_oc'], $registro['id_usuario'], $registro['total_oc']);
+				}
+				else {
+					return false;
+				}
+			}
 
 }
 ?>
