@@ -23,7 +23,7 @@
 			<ul>
 				<li ><a href='producto_add.php'>Agregar</a></li>
 				<li ><a href='producto_lst.php'>Actualizar</a></li>
-				<li ><a href='xxx_del.php'>Eliminar</a></li>
+				<li ><a href='producto_del.php'>Eliminar</a></li>
 			</ul>
 		</li>
 	</ul>
