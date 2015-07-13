@@ -1,4 +1,18 @@
-<?php include('valida_acceso.php');?>
+<?php 
+	include('valida_acceso.php');
+
+	
+// Lee datos del registro a editar
+$oProducto = new Producto();
+
+if (isset($_POST["hidcodigo"])){
+	$oProducto->setCodigo($_POST["hidcodigo"]);
+	$Registro = $oProducto->LeerRegistro();
+} else {
+	echo "Código no especificado.";
+	exit();
+}
+?>
 <!doctype html>
 <html lang=''>
 <head>
@@ -7,7 +21,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="css/styles.css">
    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
-   <title>Agregar Producto</title>
+   <title>Editar Producto</title>
 </head>
 <body>
 <?php 
@@ -18,22 +32,27 @@
 	<form id="frmdatos" method="post">
 		<table style="width:400px;">
 			<tr>
-				<td colspan="3" height="30" valign="middle" align="center" style="color:#ffffff;background-color:#ff5512;">Nuevo Producto</td>
+				<td colspan="3" height="30" valign="middle" align="center" style="color:#ffffff;background-color:#ff5512;">Editar Producto</td>
+			</tr>
+			<tr>
+				<td width="100">Codigo</td>
+				<td width="10" align="center">:</td>
+				<td width="290"><?=$Registro->getCodigo();?><input type="hidden" name="hidid" id="hidid" value="<?=$Registro->getCodigo();?>" /></td>
 			</tr>
 			<tr>
 				<td width="100">Descripcion</td>
 				<td width="10" align="center">:</td>
-				<td width="290"><input type="text" name="txtdescripcion" id="txtdescripcion" /></td>
+				<td width="290"><input type="text" name="txtdescripcion" id="txtdescripcion" value="<?=$Registro->getDescripcion();?>" /></td>
 			</tr>
 			<tr>
 				<td width="100">Unidad</td>
 				<td width="10" align="center">:</td>
-				<td width="290"><input type="text" name="txtcantidad" id="txtcantidad" /></td>
+				<td width="290"><input type="text" name="txtcantidad" id="txtcantidad" value="<?=$Registro->getCantidad();?>" /></td>
 			</tr>
 			<tr>
 				<td width="100">Precio</td>
 				<td width="10" align="center">:</td>
-				<td width="290"><input type="text" name="txtprecio" id="txtprecio" /></td>
+				<td width="290"><input type="text" name="txtprecio" id="txtprecio" value="<?=$Registro->getPrecio();?>" /></td>
 			</tr>
 			<tr>
 				<td colspan="3" height="40" valign="bottom" align="center">
@@ -58,7 +77,7 @@ $(document).ready(function(){
 			/*Llamada a metodo JQUERY:AJAX para procesor el formulario*/
 			$.ajax({
 				  method: "POST",
-				  url: "accform/accProductoAgregar.php",
+				  url: "accform/accProductoActualizar.php",
 				  data: svarform,
 				  success: function(result){
 					  $("#divmensaje").html(result);
